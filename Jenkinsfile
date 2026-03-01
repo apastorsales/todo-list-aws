@@ -30,6 +30,7 @@ pipeline {
                 sh '''
                     sam build
                     sam validate --region us-east-1
+                    aws cloudformation delete-stack --stack-name todo-list-aws-staging --region us-east-1
                     sam deploy --config-env staging --no-fail-on-empty-changeset
                 '''
             }
