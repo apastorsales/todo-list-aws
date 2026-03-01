@@ -29,7 +29,7 @@ pipeline {
                 // Etapa de despliegue SAM (“Deploy”)
                 sh '''
                     sam build
-                    sam validate
+                    sam validate --region us-east-1
                     sam deploy --config-env staging --no-fail-on-empty-changeset
                 '''
             }
