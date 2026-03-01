@@ -17,7 +17,7 @@ pipeline {
                     bandit -r src > bandit.out || true
                 '''
                 
-                recordIssues staticTests: [
+                recordIssues tools: [
                     flake8(name: 'Flake8', pattern: 'flake8.out'),
                     pyLint(name: 'Bandit', pattern: 'bandit.out')    
                 ]
