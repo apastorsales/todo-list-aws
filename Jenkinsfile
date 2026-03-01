@@ -31,7 +31,6 @@ pipeline {
                     sam build
                     sam validate --region us-east-1
                     sam deploy \
-                        --config-file samconfig.toml \
                         --config-env staging \
                         --no-confirm-changeset \
                         --no-fail-on-empty-changeset
