@@ -30,7 +30,7 @@ pipeline {
                 sh '''
                     sam build
                     sam validate --region us-east-1
-                    sam deploy --config-env staging --no-fail-on-empty-changeset --resolve-s3
+                    sam deploy --config-env staging --no-fail-on-empty-changeset
                 '''
             }
         }
