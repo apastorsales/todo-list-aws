@@ -31,7 +31,7 @@ pipeline {
                     sam build
                     sam validate --region us-east-1
                     aws dynamodb delete-table --table-name staging-TodosDynamoDbTable --region us-east-1
-                    sam deploy --config-env staging --no-fail-on-empty-changeset
+                    sam deploy --config-env staging --no-fail-on-empty-changeset   --no-confirm-changeset
                 '''
             }
         }
