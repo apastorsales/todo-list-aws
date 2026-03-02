@@ -65,6 +65,7 @@ pipeline {
                 )]) {
                     sh '''
                         set -e
+                        git config merge.ours.driver true
                         
                         git config user.email "jenkins@aps.com"
                         git config user.name "Jenkins[APS] CI"
