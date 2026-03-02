@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Get Code') {
             steps {
+                sh 'whoami && hostname'
                 // Etapa “Get Code” para descargar el código fuente del repositorio
                 git branch: 'master', url: 'https://github.com/apastorsales/todo-list-aws.git'
                 stash name: 'code', includes: '**'
@@ -13,6 +14,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
+                    whoami && hostname
                     sam build
                     sam validate --region us-east-1
                     sam deploy \
@@ -32,6 +34,7 @@ pipeline {
         stage('Rest tests') {
             agent { label 'rest-tests' }
             steps {
+                sh 'whoami && hostname'
                 unstash name: 'code'
                 unstash name: 'base_url'
                 sh '''
