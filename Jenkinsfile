@@ -59,7 +59,7 @@ pipeline {
             // Etapa “Promote” para marcar la versión como “Release” y ser desplegada en producción.
             steps {
                 withCredentials([usernamePassword(
-                    credentialsId: 'github-token',
+                    credentialsId: 'ee4d1dfd-cfe7-48b8-9edf-acaf847004c6',
                     usernameVariable: 'GIT_USER',
                     passwordVariable: 'GIT_TOKEN'
                 )]) {
