@@ -8,7 +8,7 @@ pipeline {
                 git branch: 'develop', url: 'https://github.com/apastorsales/todo-list-aws.git'
                 sh '''
                     curl -o samconfig.toml \
-                    https://github.com/apastorsales/todo-list-aws-config.git/staging/HEAD/samconfig.toml
+                    https://raw.githubusercontent.com/apastorsales/todo-list-aws-config/refs/heads/staging/samconfig.toml
                 '''
             }
         }
