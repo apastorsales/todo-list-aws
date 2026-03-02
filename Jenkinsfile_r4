@@ -9,7 +9,7 @@ pipeline {
 
                 sh '''
                     curl -o samconfig.toml \
-                    https://github.com/apastorsales/todo-list-aws-config.git/production/HEAD/samconfig.toml
+                    https://raw.githubusercontent.com/apastorsales/todo-list-aws-config/refs/heads/production/samconfig.toml
                 '''
             }
         }
