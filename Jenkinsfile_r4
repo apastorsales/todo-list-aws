@@ -20,7 +20,6 @@ pipeline {
                     sam build
                     sam validate --region us-east-1
                     sam deploy \
-                        --config-env production \
                         --no-confirm-changeset \
                         --no-fail-on-empty-changeset
                 '''
