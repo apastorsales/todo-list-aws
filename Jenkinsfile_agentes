@@ -46,8 +46,8 @@ pipeline {
                       --region us-east-1 \
                       --output text > base_url.txt
                 '''
+                stash includes: 'base_url.txt', name: 'base_url'
             }
-            stash includes: 'base_url.txt', name: 'base_url'
         }
         
         stage('Rest tests') {
