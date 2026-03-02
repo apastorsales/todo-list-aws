@@ -4,6 +4,7 @@ pipeline {
     stages {
         stage('Get Code') {
             steps {
+                sh 'whoami && hostname'
                 // Etapa “Get Code” para descargar el código fuente del repositorio 
                 git branch: 'develop', url: 'https://github.com/apastorsales/todo-list-aws.git'
                 stash name: 'code', includes: '**'
@@ -13,6 +14,7 @@ pipeline {
         stage('Static tests') {
             agent { label 'static-tests' }
             steps {
+                sh 'whoami && hostname'
                 // Etapa “Static Test” para la ejecución de las pruebas de análisis estático.
                 unstash name: 'code'
                 sh '''
@@ -29,6 +31,7 @@ pipeline {
         
         stage('Deploy') {
             steps {
+                sh 'whoami && hostname'
                 // Etapa de despliegue SAM (“Deploy”)
                 sh '''
                     sam build
@@ -50,6 +53,7 @@ pipeline {
         stage('Rest tests') {
             agent { label 'rest-tests' }
             steps {
+                sh 'whoami && hostname'
                 // Etapa “Rest Test” para la ejecución de las pruebas de integración, sobre el entorno recién levantado.
                 unstash name: 'code'
                 unstash name: 'base_url'
@@ -65,6 +69,7 @@ pipeline {
         stage('Promote') {
             // Etapa “Promote” para marcar la versión como “Release” y ser desplegada en producción.
             steps {
+                sh 'whoami && hostname'
                 withCredentials([usernamePassword(
                     credentialsId: 'ee4d1dfd-cfe7-48b8-9edf-acaf847004c6',
                     usernameVariable: 'GIT_USER',
