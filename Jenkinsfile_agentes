@@ -37,6 +37,11 @@ pipeline {
                         --config-env staging \
                         --no-confirm-changeset \
                         --no-fail-on-empty-changeset
+                    aws cloudformation describe-stacks \
+                      --stack-name todo-list-aws-staging \
+                      --query 'Stacks[0].Outputs[?OutputKey==`BaseUrlApi`].OutputValue' \
+                      --region us-east-1 \
+                      --output text > base_url.txt
                 '''
             }
             stash includes: 'base_url.txt', name: 'base_url'
