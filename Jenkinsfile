@@ -57,9 +57,6 @@ pipeline {
         
         stage('Promote') {
             // Etapa “Promote” para marcar la versión como “Release” y ser desplegada en producción.
-            when {
-                branch 'develop'
-            }
             steps {
                 withCredentials([usernamePassword(
                     credentialsId: 'github-token',
